@@ -1,0 +1,34 @@
+{
+  "name": "taskmanagementsystem",
+  "version": "1.0.0",
+  "description": "A Task Management System to keep track of everyday tasks and organize your time.",
+  "keywords": [
+    "Task",
+    "Management",
+    "System"
+  ],
+  "homepage": "https://github.com/nitinarya1001/taskManagementSystem#readme",
+  "bugs": {
+    "url": "https://github.com/nitinarya1001/taskManagementSystem/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nitinarya1001/taskManagementSystem.git"
+  },
+  "license": "ISC",
+  "author": "Nitin Arya",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "mongoose": "^9.1.3"
+  },
+  "devDependencies": {
+    "prettier": "^3.7.4"
+  }
+}
