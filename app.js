@@ -2,9 +2,6 @@ import express, { json, urlencoded } from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
-import { register, login } from "./src/routes/auth.js";
-import { homePage } from "./src/routes/homepage.js";
-
 const app = express();
 
 //middlewares
@@ -19,9 +16,12 @@ app.use(urlencoded({ extended: true, limit: "16kb" }));
 app.use(express.static("public"));
 app.use(cookieParser());
 
-//routes
-app.use("/api/auth", register);
-app.use("/api/auth", login);
+//routes Import
+import router from "./src/routes/user.routes.js";
+import { homePage } from "./src/routes/homepage.js";
+
+// routes declaration
+app.use("/api/v1/users", router);
 app.use("/", homePage);
 
 export default app;
