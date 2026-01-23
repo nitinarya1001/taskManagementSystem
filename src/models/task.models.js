@@ -3,28 +3,28 @@ import mongoose from "mongoose";
 const taskSchema = new mongoose.Schema(
   {
     taskName: {
+      required: [true, "Task name is required"],
       type: String,
     },
-    taskDescription: {
+    taskNotes: {
       type: String,
     },
-    taskcompletion: {
+    taskCompletion: {
       type: Boolean,
       default: false,
     },
     taskStatus: {
       type: String,
       enum: ["PENDING", "COMPLETED", "OVERDUE"],
+      default: "PENDING",
     },
-    taskduedate: {
+    taskDueDate: {
       type: Date,
     },
-    subTasks: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "subTasks",
-      },
-    ],
+    taskOwner: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
   },
   { timestamps: true }
 );

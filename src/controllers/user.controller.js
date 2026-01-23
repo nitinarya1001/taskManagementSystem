@@ -144,4 +144,20 @@ const logoutUser = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, {}, "User logged out successfully"));
 });
 
-export { registerUser, loginUser, logoutUser };
+const updatePassword = asyncHandler(async (req, res) => {
+  const { oldPassword, newPassword, confirmPassword } = req.body;
+  if (!oldPassword || !newPassword || !confirmPassword) {
+    throw new ApiError(401, "All fields are required");
+  }
+  if (newPassword !== confirmPassword) {
+    throw new ApiError(401, "passwords do not match!");
+  }
+  const user = await User.findById(req.user?._id);
+  if (user.isPasswordCorrect(oldPassword)) user.password = newPassword;
+  await user.save({ validateBeforeSave: false });
+  return res
+    .status(200)
+    .json(new ApiResponse(200, "Password changed succesfully"));
+});
+
+export { registerUser, loginUser, logoutUser, updatePassword };
