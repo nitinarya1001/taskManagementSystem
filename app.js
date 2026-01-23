@@ -16,6 +16,9 @@ app.use(urlencoded({ extended: true, limit: "16kb" }));
 app.use(express.static("public"));
 app.use(cookieParser());
 
+app.set("views", "./public/views");
+app.set("view engine", "ejs");
+
 //routes Import
 import router from "./src/routes/user.routes.js";
 import { homePage } from "./src/routes/homepage.js";
