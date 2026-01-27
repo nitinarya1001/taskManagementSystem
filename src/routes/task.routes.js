@@ -13,6 +13,6 @@ const router = Router();
 router.route("/create").post(verifyJWT, createTask);
 router.route("/retrieve").post(verifyJWT, retrieveTask);
 router.route("/update").post(verifyJWT, updateTask);
-router.route("/delete").post(verifyJWT, deleteTask);
+router.route("/delete").delete(verifyJWT, deleteTask);
 
 export default router;
