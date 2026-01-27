@@ -20,6 +20,15 @@ const generateAccessAndRefreshToken = async (userId) => {
   }
 };
 
+//GET Fucntions
+const registerForm = asyncHandler(async (req, res) => {
+  res.render("register-form.ejs");
+});
+const loginForm = asyncHandler(async (req, res) => {
+  res.render("login-form.ejs");
+});
+
+//POST Functions
 const registerUser = asyncHandler(async (req, res) => {
   // get data from frontend/postman.
   const { username, email, password, firstname, lastname } = req.body;
@@ -152,4 +161,11 @@ const updatePassword = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, "Password changed succesfully"));
 });
 
-export { registerUser, loginUser, logoutUser, updatePassword };
+export {
+  loginForm,
+  registerForm,
+  registerUser,
+  loginUser,
+  logoutUser,
+  updatePassword,
+};
